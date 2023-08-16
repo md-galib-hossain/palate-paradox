@@ -4,7 +4,7 @@ import featuredImg from "../../../assets/home/featured.jpg";
 import "./ImageBox.css";
 const ImageBox = () => {
   return (
-    <div className="max-w-screen-xl bgimage mx-auto p-16 my-20">
+    <div className="max-w-screen-xl bgimage mx-auto p-16 mb-24">
       <div className="bg-white p-16">
         <div className="text-center">
           <h3 className="text-4xl uppercase mb-2">Palete Paradox</h3>

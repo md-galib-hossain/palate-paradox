@@ -22,7 +22,7 @@ const Category = () => {
     { slideImg: slide5, slideCaption: "Salads" },
   ];
   return (
-    <section className="max-w-screen-xl	mx-auto">
+    <section className="max-w-screen-xl	mx-auto mb-24">
         <SectionTitle 
         subHeading={"From 11.00am to 10.00pm"}
         heading={"Order Online"}>
@@ -41,7 +41,7 @@ const Category = () => {
         }}
         modules={[Pagination]}
        
-        className="mySwiper my-24 "
+        className="mySwiper mb-24 "
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>

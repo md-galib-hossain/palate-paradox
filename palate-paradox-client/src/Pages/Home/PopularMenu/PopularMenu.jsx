@@ -13,7 +13,7 @@ const PopularMenu = () => {
       });
   }, []);
   return (
-    <section className="max-w-screen-xl mx-auto mb-12">
+    <section className="max-w-screen-xl mx-auto mb-32">
       <SectionTitle
         heading={"From Our Menu"}
         subHeading={"Popular Items"}

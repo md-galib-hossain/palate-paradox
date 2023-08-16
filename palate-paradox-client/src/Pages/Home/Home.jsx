@@ -3,6 +3,7 @@ import Banner from './Banner/Banner'
 import Category from './Category/Category'
 import ImageBox from './ImageBox/ImageBox'
 import PopularMenu from './PopularMenu/PopularMenu'
+import CallusSection from './CallusSection/CallusSection'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Category></Category>
       <ImageBox></ImageBox>
       <PopularMenu></PopularMenu>
+      <CallusSection></CallusSection>
     </div>
   )
 }
