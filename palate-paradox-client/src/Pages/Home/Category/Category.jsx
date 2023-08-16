@@ -32,7 +32,7 @@ const Category = () => {
         slidesPerView={4}
         spaceBetween={30}
         autoplay={{
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
         centeredSlides={true}
