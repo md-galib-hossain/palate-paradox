@@ -25,7 +25,7 @@ const Recommended = () => {
         heading={"Chef Recommends"}
         subHeading={"Should Try"}
       ></SectionTitle>
-      <div className="flex flex-row place-content-between">
+      <div className="flex sm:flex-row flex-col ">
         {cardInfo.map((card) => (
           <div className="card w-80 glass rounded-none mx-auto">
             <figure>
