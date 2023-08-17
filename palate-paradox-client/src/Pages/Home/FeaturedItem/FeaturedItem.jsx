@@ -3,29 +3,31 @@ import "./FeaturedItem.css";
 import img1 from "./../../../assets/home/featured.jpg";
 const FeaturedItem = () => {
   return (
-    <section className="featurebg bg-center bg-cover">
-      <SectionTitle
-        heading={"FROM OUR MENU"}
-        subHeading={"Check it out"}
-      ></SectionTitle>
-      <div className="flex flex-row w-3/5">
-        {/* left side div */}
-        <div>
-          <img src={img1} alt="" />
-        </div>
-        {/* right side div */}
-        <div className="flex flex-col">
-          <div>
+    <section className="featurebg bg-cover bg-center text-white pb-14 pt-8 md:px-32 flex items-center relative">
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="w-3/4 mx-auto z-10">
+        <SectionTitle
+          heading={"FROM OUR MENU"}
+          subHeading={"Check it out"}
+        ></SectionTitle>
+        <div className="md:flex flex-row justify-center items-center">
+          {/* left side div */}
+          <div className="w-fit">
+            <img className="" src={img1} alt="" />
+          </div>
+          {/* right side div */}
+          <div className="flex flex-col md:ml-10 my-4 text-white">
             <p className="text-xl"> March,2023</p>
-            <h3 className="text-2xl uppercase">Where can i get some?</h3>
+            <h3 className="text-2xl uppercase">Where can i get some ?</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
               nulla eaque, esse, id odit voluptates ducimus alias voluptatum
               hic.
             </p>
-          </div>
-          <div>
-            <button>Read More</button>
+
+            <button className="btn btn-outline w-2/5 mt-8 text-white border-t-0 border-x-0 border-b-2 rounded-lg border-white">
+              Read More
+            </button>
           </div>
         </div>
       </div>
