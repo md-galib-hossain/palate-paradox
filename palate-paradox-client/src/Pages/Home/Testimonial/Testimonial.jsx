@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css'
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -17,7 +20,7 @@ const Testimonial = () => {
     },[])
     console.log(reviews)
   return (
-<section >
+<section className="max-w-screen-xl mx-auto">
     <SectionTitle heading={"Testimonials"} subHeading={"What Our Clients Say"}>
 
     </SectionTitle>
@@ -25,8 +28,10 @@ const Testimonial = () => {
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
      {
         reviews.map((review)=> <SwiperSlide key={review._id}>
-            <div>
-<p>{review.details}</p>
+            <div className="flex flex-col items-center my-16 mx-24 text-center ">
+            <Rating style={{ maxWidth: 250 }} value={review.rating} readOnly />
+
+<p className="my-10">{review.details}</p>
 <h3 className="text-2xl text-orange-400">{review.name}</h3>
 </div>
         </SwiperSlide>

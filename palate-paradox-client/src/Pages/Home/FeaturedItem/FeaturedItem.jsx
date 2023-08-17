@@ -25,7 +25,7 @@ const FeaturedItem = () => {
               hic.
             </p>
 
-            <button className="btn btn-outline w-2/5 mt-8 text-white border-0 border-b-2 rounded-lg border-white">
+            <button className="btn btn-outline w-2/5 mt-8 text-white border-0 border-b-2 rounded-lg border-white hover:border-white">
               Read More
             </button>
           </div>
