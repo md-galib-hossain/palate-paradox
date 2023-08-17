@@ -3,8 +3,8 @@ import "./FeaturedItem.css";
 import img1 from "./../../../assets/home/featured.jpg";
 const FeaturedItem = () => {
   return (
-    <section className="featurebg bg-cover bg-center text-white pb-14 pt-8 md:px-32 flex items-center relative">
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+    <section className="featurebg bg-cover bg-fixed bg-center text-white pb-14 pt-8 md:px-32 flex items-center relative mb-24">
+      <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="w-3/4 mx-auto z-10">
         <SectionTitle
           heading={"FROM OUR MENU"}
@@ -25,7 +25,7 @@ const FeaturedItem = () => {
               hic.
             </p>
 
-            <button className="btn btn-outline w-2/5 mt-8 text-white border-t-0 border-x-0 border-b-2 rounded-lg border-white">
+            <button className="btn btn-outline w-2/5 mt-8 text-white border-0 border-b-2 rounded-lg border-white">
               Read More
             </button>
           </div>
