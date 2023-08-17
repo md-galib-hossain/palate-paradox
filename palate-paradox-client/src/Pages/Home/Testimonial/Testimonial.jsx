@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
-
+import { FaQuoteLeft } from "react-icons/fa";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,8 +28,9 @@ const Testimonial = () => {
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
      {
         reviews.map((review)=> <SwiperSlide key={review._id}>
-            <div className="flex flex-col items-center my-16 mx-24 text-center ">
-            <Rating style={{ maxWidth: 250 }} value={review.rating} readOnly />
+            <div className="flex flex-col items-center my-8 mx-24 text-center ">
+            <Rating className="mb-10" style={{ maxWidth: 250 }} value={review.rating} readOnly />
+                <FaQuoteLeft size={70} color="black"/>
 
 <p className="my-10">{review.details}</p>
 <h3 className="text-2xl text-orange-400">{review.name}</h3>
