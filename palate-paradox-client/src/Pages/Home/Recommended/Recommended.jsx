@@ -22,7 +22,7 @@ const Recommended = () => {
 
     ]
   return (
-    <section className="max-w-screen-xl mx-auto mb-20">
+    <section className="max-w-screen-xl mx-auto mb-24">
       <SectionTitle
         heading={"Chef Recommends"}
         subHeading={"Should Try"}
@@ -34,7 +34,7 @@ const Recommended = () => {
     <figure>
       <img
         src={card.img}
-        alt="car!"
+        alt="Food"
       />
     </figure>
     <div className="card-body mx-auto bg-slate-100 text-center gap-0">

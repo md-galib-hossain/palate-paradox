@@ -5,6 +5,7 @@ import ImageBox from './ImageBox/ImageBox'
 import PopularMenu from './PopularMenu/PopularMenu'
 import CallusSection from './CallusSection/CallusSection'
 import Recommended from './Recommended/Recommended'
+import FeaturedItem from './FeaturedItem/FeaturedItem'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <PopularMenu></PopularMenu>
       <CallusSection></CallusSection>
       <Recommended></Recommended>
+      <FeaturedItem></FeaturedItem>
     </div>
   )
 }
