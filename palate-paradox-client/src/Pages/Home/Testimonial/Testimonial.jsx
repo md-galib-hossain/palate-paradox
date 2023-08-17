@@ -5,13 +5,16 @@ import '@smastrom/react-rating/style.css'
 import { FaQuoteLeft } from "react-icons/fa";
 
 // Import Swiper styles
+import SwiperCore from 'swiper';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation,Autoplay } from 'swiper/modules';
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle"
 
 const Testimonial = () => {
     const [reviews,setReviews] = useState([])
+    SwiperCore.use([Autoplay]);
 
     useEffect(()=>{
         fetch('reviews.json')
@@ -25,7 +28,10 @@ const Testimonial = () => {
 
     </SectionTitle>
 
-    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper"  autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}>
      {
         reviews.map((review)=> <SwiperSlide key={review._id}>
             <div className="flex flex-col items-center my-8 mx-24 text-center ">

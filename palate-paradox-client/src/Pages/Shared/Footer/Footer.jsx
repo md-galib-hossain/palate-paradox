@@ -20,8 +20,8 @@ const Footer = () => {
 </div>
 
 {/* 2nd footer */}
-<div className="text-center p-4 bg-base-300 text-base-content">
-  <div>
+<div className="text-center p-4 bg-slate-900 text-base-content">
+  <div className="text-white">
     <p>Copyright © {year} - All right reserved by Palate Paradox</p>
   </div>
 </div>
