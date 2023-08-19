@@ -7,10 +7,14 @@ import CallusSection from './CallusSection/CallusSection'
 import Recommended from './Recommended/Recommended'
 import FeaturedItem from './FeaturedItem/FeaturedItem'
 import Testimonial from './Testimonial/Testimonial'
+import { Helmet } from 'react-helmet-async'
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Banner></Banner>
       <Category></Category>
       <ImageBox></ImageBox>
