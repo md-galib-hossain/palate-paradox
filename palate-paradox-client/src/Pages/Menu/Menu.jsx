@@ -22,7 +22,7 @@ const Menu = () => {
         <title>Menu</title>
       </Helmet>
       {/* Menu */}
-    <Cover img={menuimg} height ={"600px"} title="our menu"></Cover>
+    <Cover img={menuimg} title="our menu"></Cover>
     {/* offered */}
    <SectionTitle heading={"Today's offer"} subHeading={"Don't miss"}></SectionTitle>
    <MenuCategory items={offered}></MenuCategory>
