@@ -12,7 +12,7 @@ const NavBar = () => {
     
      
       <li>
-      <Link className="hover:text-yellow-400" to="/order">Order</Link>{" "}
+      <Link className="hover:text-yellow-400" to="/order/salad">Order</Link>{" "}
       </li>
       <li>
       <Link className="hover:text-yellow-400" to="/">Cart</Link>{" "}
