@@ -25,9 +25,9 @@ const Recommended = () => {
         heading={"Chef Recommends"}
         subHeading={"Should Try"}
       ></SectionTitle>
-      <div className="flex sm:flex-row flex-col ">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center mx-auto">
         {cardInfo.map((card) => (
-          <div className="card w-80 glass rounded-none mx-auto">
+          <div className="card max-w-sm glass rounded-none mx-auto">
             <figure>
               <img src={card.img} alt="Food" />
             </figure>
