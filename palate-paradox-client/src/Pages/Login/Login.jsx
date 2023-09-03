@@ -24,12 +24,13 @@ const captchaRef = useRef(null)
   const handleValidateCaptcha = () => {
 const user_captcha_value  = captchaRef.current.value
 if (validateCaptcha(user_captcha_value)==true) {
-    alert('Captcha Matched');
     // After validation login button is clickable
     setdisabled(!disabled)
+    alert('Captcha Matched');
 }
 
 else {
+    setdisabled(true)
     alert('Captcha Does Not Match');
 }
 
