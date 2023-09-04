@@ -7,6 +7,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 const {signIn} = useContext(AuthContext)
@@ -45,7 +46,11 @@ else {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <>
+       <Helmet>
+        <title>Palete Paradox | Login</title>
+      </Helmet>
+      <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center w-1/2 lg:text-left lg:ps-10">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -117,6 +122,8 @@ else {
         </div>
       </div>
     </div>
+    </>
+  
   );
 };
 

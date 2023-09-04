@@ -1,25 +1,47 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout= () =>[
+    logOut()
+    .then(()=>{})
+    .catch(error => console.log(error))
+  ]
   const navOptions = (
     <>
-        <li className="">
-        <Link className="hover:text-yellow-400 " to="/">Home</Link>{" "}
+      <li>
+        <Link className="hover:text-yellow-400 " to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link className="hover:text-yellow-400" to="/menu">Our Menu</Link>{" "}
+        <Link className="hover:text-yellow-400" to="/menu">
+          Our Menu
+        </Link>
       </li>
-    
-     
+
       <li>
-      <Link className="hover:text-yellow-400" to="/order/salad">Order</Link>{" "}
+        <Link className="hover:text-yellow-400" to="/order/salad">
+          Order
+        </Link>
       </li>
       <li>
-      <Link className="hover:text-yellow-400" to="/">Cart</Link>{" "}
+        <Link className="hover:text-yellow-400" to="/">
+          Cart
+        </Link>
       </li>
-      <li>
-      <Link className="hover:text-yellow-400" to="/login">Login</Link>{" "}
-      </li>
+      {user ? (
+        <button onClick={handleLogout} className="btn btn-ghost">LogOut</button>
+      ) : (
+        <li>
+          <Link className="hover:text-yellow-400" to="/login">
+            Login
+          </Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -53,10 +75,10 @@ const NavBar = () => {
           <a className="btn btn-ghost normal-case text-xl">Palate Paradox</a>
         </div>
         <div className="navbar-center hidden lg:flex ">
-          <ul className="flex space-x-16 px-1 ">{navOptions}</ul>
+          <ul className="flex space-x-16 px-1 place-items-center">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <a className="btn">Button</a> 
         </div>
       </div>
     </div>
