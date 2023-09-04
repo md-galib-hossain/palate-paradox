@@ -6,6 +6,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 const {signIn} = useContext(AuthContext)
@@ -106,7 +107,13 @@ else {
             <div className="form-control mt-6">
               <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
             </div>
+              <label className="label">
+              <p className="label-text-alt">New here ?
+              <Link to="/signup"> Create an account</Link>
+              </p>
+            </label>
           </form>
+       
         </div>
       </div>
     </div>
