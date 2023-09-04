@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+const {signIn} = useContext(AuthContext)
 
 const [disabled, setdisabled] = useState(true)
 //taking values using useRef from the input of captcha field
@@ -19,6 +22,10 @@ const captchaRef = useRef(null)
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    signIn(email, password)
+    .then(result =>{
+      const user = result.user
+    })
   };
 
   const handleValidateCaptcha = () => {
