@@ -18,7 +18,7 @@ const SignUp = () => {
     createUser(data.email, data.password)
     .then(result =>{
         const loggedUser = result.user
-        console.log(loggedUser)
+        // sweet alert after signup success
         Swal.fire({
           title: `${loggedUser.email} account have been created`,
           showClass: {

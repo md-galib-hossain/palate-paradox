@@ -13,6 +13,11 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li>
+        <Link className="hover:text-yellow-400 " to="/secret">
+          Secret
+        </Link>
+      </li>
+      <li>
         <Link className="hover:text-yellow-400 " to="/">
           Home
         </Link>
