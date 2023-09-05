@@ -10,7 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+const { signIn } = useContext(AuthContext);
 const navigate = useNavigate()
 const location = useLocation()
 // getting from which route it came to login page
@@ -40,7 +40,7 @@ const from = location.state?.from?.pathname || "/"
     } else {
       setdisabled(true);
     }
-  };
+  }; 
 
   return (
     <>
@@ -99,8 +99,9 @@ const from = location.state?.from?.pathname || "/"
                 />
               </div>
               <div className="form-control mt-6">
+                {/* TODO: make button disable for catpcha */}
                 <input
-                  disabled={disabled}
+                  disabled={false}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"

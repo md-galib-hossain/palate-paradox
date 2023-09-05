@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
@@ -6,7 +6,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -15,20 +16,33 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-    .then(result =>{
-        const loggedUser = result.user
-        // sweet alert after signup success
-        Swal.fire({
-          title: `${loggedUser.email} account have been created`,
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          reset();
         })
-    })
+        .catch((error) => {
+          console.log(error);
+        });
+        console.log(loggedUser)
+      // sweet alert after signup success
+      Swal.fire({
+        title: `${loggedUser.email} account have been created`,
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      logOut()
+      .then(()=>{
+        navigate('/login')
+      })
+      .catch(err => console.log(err))
+      
+    });
   };
 
   return (
@@ -48,6 +62,20 @@ const SignUp = () => {
           </div>
           <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="photoURL"
+                  {...register("photoURL", { required: true })}
+                  className="input input-bordered"
+                />
+                {errors.photoURL && (
+                  <span className="text-red-500">Photo URL is required</span>
+                )}
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>

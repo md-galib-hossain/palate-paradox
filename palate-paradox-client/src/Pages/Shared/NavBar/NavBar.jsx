@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { FaShoppingCart } from 'react-icons/fa';
+
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleLogout= () =>[
+  const handleLogout = () => [
     logOut()
-    .then(()=>{})
-    .catch(error => console.log(error))
-  ]
+      .then(() => {})
+      .catch((error) => console.log(error)),
+  ];
   const navOptions = (
     <>
       <li>
@@ -34,12 +36,20 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-yellow-400" to="/">
-          Cart
+        <Link>
+          <button className="btn">
+            <FaShoppingCart/>
+            <div className="badge badge-secondary">+0</div>
+            
+          </button>
         </Link>
       </li>
       {user ? (
-        <button onClick={handleLogout} className="btn btn-ghost">LogOut</button>
+        <>
+          <button onClick={handleLogout} className="btn btn-ghost">
+            LogOut
+          </button>
+        </>
       ) : (
         <li>
           <Link className="hover:text-yellow-400" to="/login">
@@ -80,10 +90,12 @@ const NavBar = () => {
           <a className="btn btn-ghost normal-case text-xl">Palate Paradox</a>
         </div>
         <div className="navbar-center hidden lg:flex ">
-          <ul className="flex space-x-16 px-1 place-items-center">{navOptions}</ul>
+          <ul className="flex space-x-16 px-1 place-items-center">
+            {navOptions}
+          </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a> 
+          <a className="btn">Button</a>
         </div>
       </div>
     </div>
