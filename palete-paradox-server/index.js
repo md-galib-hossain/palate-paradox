@@ -10,8 +10,7 @@ app.use(express.json());
 // database configuration
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri =
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.fkxltzv.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.fkxltzv.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -27,18 +26,29 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    // Getting database collections
     const menuCollection = client.db("paradoxdb").collection("menu");
     const reviewCollection = client.db("paradoxdb").collection("reviews");
+    const cartCollection = client.db("paradoxdb").collection("carts");
 
-app.get("/menu", async(req,res)=>{
-    const result = await menuCollection.find().toArray()
-    res.send(result)
+    // getting menu items
+    app.get("/menu", async (req, res) => {
+      const result = await menuCollection.find().toArray();
+      res.send(result);
+    });
+    // getting review items
+    app.get("/reviews", async (req, res) => {
+      const result = await reviewCollection.find().toArray();
+      res.send(result);
+    });
+    // Cart collection
+app.post('/carts', async (req,res)=>{
+  const item = req.body
+  console.log(item);
+  const result = await cartCollection.insertOne(item)
+  res.send(result)
 })
-app.get("/reviews", async(req,res)=>{
-    const result = await reviewCollection.find().toArray()
-    res.send(result)
-})
-
+  
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
