@@ -5,17 +5,20 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Routes/Routes";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./Providers/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <HelmetProvider>
-    
-      {/* Setting full project wide length */}
-      <div className="">
-        <RouterProvider router={router} />
-      </div>
-    </HelmetProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          {/* Setting full project wide length */}
+          <div className="">
+            <RouterProvider router={router} />
+          </div>
+        </QueryClientProvider>
+      </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>
 );
