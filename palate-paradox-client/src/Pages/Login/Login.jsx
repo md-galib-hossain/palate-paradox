@@ -8,6 +8,7 @@ import {
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
 const { signIn } = useContext(AuthContext);
@@ -113,6 +114,7 @@ const from = location.state?.from?.pathname || "/"
                 </p>
               </label>
             </form>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
