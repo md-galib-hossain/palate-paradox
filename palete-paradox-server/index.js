@@ -30,6 +30,20 @@ async function run() {
     const menuCollection = client.db("paradoxdb").collection("menu");
     const reviewCollection = client.db("paradoxdb").collection("reviews");
     const cartCollection = client.db("paradoxdb").collection("carts");
+    const usersCollection = client.db("paradoxdb").collection("users");
+
+    // user related apis
+    app.post("/users", async (req, res) => {
+      const user = req.body;
+      const query = { email: user.email };
+      // if user email exist in db then dont insert it
+      const existingUser = await usersCollection.findOne(query);
+      if (existingUser) {
+        return res.send({ message: "User already exists" });
+      }
+      const result = await usersCollection.insertOne(user);
+      res.send(result);
+    });
 
     // getting menu items
     app.get("/menu", async (req, res) => {
@@ -42,32 +56,29 @@ async function run() {
       res.send(result);
     });
     // Cart collection
-app.post('/carts', async (req,res)=>{
-  const item = req.body
-  console.log(item);
-  const result = await cartCollection.insertOne(item)
-  res.send(result)
-})
-// getting cart items based on email
-app.get('/carts', async(req,res) =>{
-const email = req.query.email;
-if(!email){
-  res.send([])
-}
-const query = { email : email}
-const result = await cartCollection.find(query).toArray();
-res.send(result);
-})
+    app.post("/carts", async (req, res) => {
+      const item = req.body;
+      const result = await cartCollection.insertOne(item);
+      res.send(result);
+    });
+    // getting cart items based on email
+    app.get("/carts", async (req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+      const query = { email: email };
+      const result = await cartCollection.find(query).toArray();
+      res.send(result);
+    });
 
-// delete cart item
-app.delete('/carts/:id', async(req,res) =>{
-  const id = req.params.id
-const query = { _id: new ObjectId(id)}
-const result = await cartCollection.delete(query)
-res.send(result)
-
-});
-  
+    // delete cart item
+    app.delete("/carts/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await cartCollection.deleteOne(query);
+      res.send(result);
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
