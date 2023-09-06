@@ -37,12 +37,12 @@ const [cart] = useCart()
         </Link>
       </li>
       <li>
-        <Link to="/dashboard/mycart">
-          <button className="btn">
+        <Link to="/dashboard/mycart" className="flex gap-2 items-center">
+         
             <FaShoppingCart/>
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+            <div className="badge badge-ghost">+{cart?.length || 0}</div>
             
-          </button>
+          
         </Link>
       </li>
       {user ? (

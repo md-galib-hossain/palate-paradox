@@ -6,8 +6,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,28 +20,43 @@ const SignUp = () => {
       const loggedUser = result.user;
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          reset();
+          // saving user info in database
+          const saveUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+
+                // sweet alert after signup success
+                Swal.fire({
+                  title: `${loggedUser.email} account have been created`,
+                  showClass: {
+                    popup: "animate__animated animate__fadeInDown",
+                  },
+                  hideClass: {
+                    popup: "animate__animated animate__fadeOutUp",
+                  },
+                });
+              }
+            });
         })
         .catch((error) => {
           console.log(error);
         });
-        console.log(loggedUser)
-      // sweet alert after signup success
-      Swal.fire({
-        title: `${loggedUser.email} account have been created`,
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
+      console.log(loggedUser);
+      // calling logout after signup is complete
       logOut()
-      .then(()=>{
-        navigate('/login')
-      })
-      .catch(err => console.log(err))
-      
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((err) => console.log(err));
     });
   };
 

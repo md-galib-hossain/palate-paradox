@@ -7,8 +7,10 @@ import {
 } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 import { TfiWrite } from "react-icons/tfi";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart()
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -26,10 +28,12 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 gap-2 min-h-full text-black bg-[#D1A054]">
           {/* Sidebar content here */}
-          <li >
+          <li className="flex items-start">
             <Link to="/dashboard/mycart">
               <FaShoppingCart></FaShoppingCart>
-              My Cart
+
+              My Cart<div className="badge badge-ghost">+{cart?.length || 0}</div>
+
             </Link>
           </li>
           <li>
