@@ -37,7 +37,7 @@ const [cart] = useCart()
         </Link>
       </li>
       <li>
-        <Link>
+        <Link to="/dashboard/mycart">
           <button className="btn">
             <FaShoppingCart/>
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
@@ -83,7 +83,7 @@ const [cart] = useCart()
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu bg-black bg-opacity-30 menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
             >
               {navOptions}
             </ul>
