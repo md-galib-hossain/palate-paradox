@@ -10,13 +10,22 @@ const SocialLogin = () => {
   const from = location.state?.from?.pathname || "/";
   const { googleSignIn } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
-    googleSignIn()
-    .then(result =>{
+    googleSignIn().then((result) => {
       const loggedInUser = result.user;
-        navigate(from, { replace: true });
-    
-})
-
+      const saveUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+      };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(saveUser),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          navigate(from, { replace: true });
+        });
+    });
   };
 
   return (
