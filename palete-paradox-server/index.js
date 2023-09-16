@@ -45,6 +45,23 @@ async function run() {
       res.send(result);
     });
 
+    // getting users
+    app.get("/users", async (req, res) => {
+      const result = await usersCollection.find().toArray();
+      res.send(result);
+    });
+    app.patch("/users/admin/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const updatedDoc = {
+        $set: {
+          role: "admin",
+        },
+      };
+
+      const result = await usersCollection.updateOne(filter, updatedDoc);
+      res.send(result);
+    });
     // getting menu items
     app.get("/menu", async (req, res) => {
       const result = await menuCollection.find().toArray();
